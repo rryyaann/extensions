@@ -4,6 +4,7 @@
   <strong>Description:</strong>
   <%= @addon.description %>
 </p>
-
+<% if @pin.user == current_user %>
 <%= link_to 'Edit', edit_addon_path(@addon) %> |
+<% end %>
 <%= link_to 'Back', addons_path %>

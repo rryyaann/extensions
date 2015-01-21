@@ -1,25 +1,20 @@
 <h1>Listing addons</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @addons.each do |addon| %>
-      <tr>
-        <td><%= addon.description %></td>
-        <td><%= link_to 'Show', addon %></td>
-        <td><%= link_to 'Edit', edit_addon_path(addon) %></td>
-        <td><%= link_to 'Destroy', addon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="addons" class="transitions-enabled">
+  <% @addons.each do |addon| %>
+      <div class="panel-body">
+        <%= addon.description %>
+        <%= addon.user.email if addon.user %>
+        <%= link_to 'Show', addon_path(addon) %>
+        <% if addon.user == current_user %>
+          <%= link_to 'Edit', edit_addon_path(addon) %>
+          <%= link_to 'Destroy', addon, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+  <% end %>
+</div>
 
 <br>
-
-<%= link_to 'New Addon', new_addon_path %>
+<% if user_signed_in? %>
+    <%= link_to 'New Addon', new_addon_path %>
+<% end %>    
