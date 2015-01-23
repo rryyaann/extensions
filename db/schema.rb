@@ -11,16 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121203346) do
+ActiveRecord::Schema.define(version: 20150121230243) do
 
   create_table "addons", force: true do |t|
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "explanation"
+    t.string   "category"
+    t.string   "url"
+    t.integer  "review_id"
   end
 
+  add_index "addons", ["review_id"], name: "index_addons_on_review_id"
   add_index "addons", ["user_id"], name: "index_addons_on_user_id"
+
+  create_table "reviews", force: true do |t|
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

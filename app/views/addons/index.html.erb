@@ -1,6 +1,6 @@
 <%= render 'pages/home' unless user_signed_in? %>
 
-<h1 class="center">The Extensions Rankings</h1>
+<h1 class="center">The Rankings - The Best Extensions</h1>
 
 <div id="addons" class="transitions-enabled">
   <% @addons.each do |addon| %>
@@ -8,8 +8,11 @@
   <div class="col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= addon.description %>
-        <%= link_to 'Show', addon_path(addon) %>
+        <strong><%= addon.id %>. <%= addon.description %></strong> | <%= addon.category %> | <%= addon.url %>
+      </br>
+      </br>
+        <%= addon.explanation %>
+      </br>  
         <% if addon.user == current_user %>
           <%= link_to 'Edit', edit_addon_path(addon) %>
           <%= link_to 'Destroy', addon, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -23,5 +26,7 @@
 
 <br>
 <% if user_signed_in? %>
-    <%= link_to 'New Addon', new_addon_path %>
+    <%= link_to "New Addon", new_addon_path, class: " center btn btn-primary btn-lg" %>
+  </br>
+  </br>
 <% end %>    

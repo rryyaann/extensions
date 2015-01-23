@@ -12,9 +12,25 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :description %><br>
+    <%= f.label :extension_name %><br>
     <%= f.text_field :description, class: "form-control" %>
   </div>
+
+  <div class="form-group">
+       <%= f.label :url %>
+       <%= f.text_field :url, class: "form-control", :autofocus => true %>
+     </div>
+
+  <div class="form-group">
+       <%= f.label :description %>
+       <%= f.text_field :explanation, class: "form-control", :autofocus => true %>
+     </div>  
+
+  <div class="form-group">
+       <%= f.label :category %>
+       <%= f.text_field :category, class: "form-control", :autofocus => true %>
+     </div>   
+
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
