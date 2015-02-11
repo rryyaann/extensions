@@ -8,10 +8,9 @@
   <div class="col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
-        <strong><%= addon.id %>. <%= addon.description %></strong> | <%= addon.category %> | <%= addon.url %>
+        <h4><strong><%= addon.description %></strong> | <%= addon.category %> | <a href="http://<%= addon.url %>"><%= addon.url %></a></h4>
       </br>
-      </br>
-        <%= addon.explanation %>
+        <h4><%= addon.explanation %></h4>
       </br>  
         <% if addon.user == current_user %>
           <%= link_to 'Edit', edit_addon_path(addon) %>
